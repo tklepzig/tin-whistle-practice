@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Forest green rounded-square background -->
+  <rect width="48" height="48" rx="11" fill="#1c3a28"/>
+
+  <!-- Tin whistle silhouette at ~25° angle -->
+  <g transform="rotate(-25, 24, 24)">
+    <!-- Main tube body -->
+    <rect x="5" y="21" width="38" height="6" rx="3" fill="#8cb89e"/>
+    <!-- Mouthpiece cap (fipple) — lighter, slightly wider feel -->
+    <rect x="5" y="21" width="9" height="6" rx="3" fill="#aed0be"/>
+    <!-- Subtle sheen along the tube -->
+    <rect x="14" y="22" width="26" height="1.5" rx="0.75" fill="#c4dece" opacity="0.45"/>
+    <!-- 6 finger holes -->
+    <circle cx="19" cy="24" r="1.15" fill="#1c3a28"/>
+    <circle cx="23" cy="24" r="1.15" fill="#1c3a28"/>
+    <circle cx="27" cy="24" r="1.15" fill="#1c3a28"/>
+    <circle cx="31" cy="24" r="1.15" fill="#1c3a28"/>
+    <circle cx="35" cy="24" r="1.15" fill="#1c3a28"/>
+    <circle cx="39" cy="24" r="1.15" fill="#1c3a28"/>
+  </g>
+</svg>
