@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import ABCJS from 'abcjs';
+import { expandRollsForAudio } from '../utils/abcRolls';
 
 type AudioState = 'idle' | 'loading' | 'playing' | 'paused' | 'error';
 
@@ -55,6 +56,7 @@ export function useAudio() {
   }, []);
 
   const play = useCallback(async (
+    abc: string,
     visualObj: ABCJS.TuneObject,
     container: HTMLElement,
   ) => {
@@ -75,10 +77,17 @@ export function useAudio() {
         await audioContext.resume();
       }
 
+      // Expand roll ornaments (~) to grace note sequences for audio synthesis.
+      // The display visualObj is kept for cursor sync; a separate audio render
+      // is used so the synth plays the actual ornament notes.
+      const expandedAbc = expandRollsForAudio(abc);
+      const audioVisualObjs = ABCJS.renderAbc('*', expandedAbc, {});
+      const audioVisualObj = audioVisualObjs[0] ?? visualObj;
+
       const synth = new ABCJS.synth.CreateSynth();
       await synth.init({
         audioContext,
-        visualObj,
+        visualObj: audioVisualObj,
         options: {
           // GM patch 75 = Recorder (closest available to tin whistle)
           program: 75,

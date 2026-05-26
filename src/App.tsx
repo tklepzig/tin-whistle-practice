@@ -38,9 +38,9 @@ export default function App() {
 
   const handlePlay = useCallback(() => {
     if (visualObjRef.current && notationContainerRef.current) {
-      play(visualObjRef.current, notationContainerRef.current);
+      play(adjustedAbc, visualObjRef.current, notationContainerRef.current);
     }
-  }, [play]);
+  }, [play, adjustedAbc]);
 
   const handleMarkComplete = useCallback(() => {
     markComplete(currentId);
